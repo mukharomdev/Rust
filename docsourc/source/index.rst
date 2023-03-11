@@ -26,6 +26,7 @@ Rust-docs:Pengenalan Rust Bahasa Indonesia
    Crate
    Referensi
    Sample
+   rst_cheatsheet
 
 
 Feature Link :
