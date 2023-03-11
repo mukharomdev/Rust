@@ -1,43 +1,101 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="id" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
-    <title>Fungsi &#8212; Pengenalan Rust Bahasa Indonesia</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fungsi &mdash; Pengenalan Rust Bahasa Indonesia</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Indeks" href="genindex.html" />
     <link rel="search" title="Pencarian" href="search.html" />
     <link rel="next" title="Ownership" href="Ownership.html" />
     <link rel="prev" title="Variabel" href="Variabel.html" /> 
-  </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>Pengenalan Rust Bahasa Indonesia</span></a></h1>
-        <h2 class="heading"><span>Fungsi</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="Variabel.html">Variabel</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Konten</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="Ownership.html">Ownership</a>&#160;&#160;»
-        </p>
+</head>
 
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Rust-docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Daftar Isi:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Pengenalan.html">Pengenalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Variabel.html">Variabel</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fungsi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Fungsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fungsi-dalam-rust">Fungsi dalam Rust</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#early-return">Early Return</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prosedur-dalam-rust">Prosedur dalam Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Ownership.html">Ownership</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerasi_dan_Pattern_Matching.html">Enumerasi dan Pattern Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tipe_Result_dan_Option.html">Tipe Result dan Option</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kondisional.html">Kondisional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Loop.html">Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Struktur_dan_Implementasi.html">Struktur dan Implementasi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Trait.html">Trait</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generic.html">Generic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Smart_Pointer.html">Smart Pointer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cargo.html">Cargo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crate.html">Crate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Referensi.html">Referensi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sample.html">Sample:Document Title</a></li>
+</ul>
+
+        </div>
       </div>
-      <div class="content" role="main">
-        
-        
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Rust-docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Fungsi</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Fungsi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="fungsi">
-<h1><a class="toc-backref" href="#id2" role="doc-backlink">Fungsi</a><a class="headerlink" href="#fungsi" title="Permalink to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Fungsi</a><a class="headerlink" href="#fungsi" title="Permalink to this heading"></a></h1>
 <nav class="contents" id="overview">
 <p class="topic-title">Overview</p>
 <ul class="simple">
@@ -55,11 +113,11 @@
 </ul>
 </nav>
 <section id="id1">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Fungsi</a><a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Fungsi</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>Fungsi merupakan sebuah abstraksi dari proses khusus yang kemudian mengembalikan nilai. Sebuah prosedur merupakan sebuah abstraksi rangkaian dari proses khusus yang serupa dengan fungsi, namun prosedur tidak mengembalikan apa-apa.</p>
 </section>
 <section id="fungsi-dalam-rust">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Fungsi dalam Rust</a><a class="headerlink" href="#fungsi-dalam-rust" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Fungsi dalam Rust</a><a class="headerlink" href="#fungsi-dalam-rust" title="Permalink to this heading"></a></h2>
 <p>Dalam bahasa Rust, fungsi dideklarasikan dengan keyword <code class="docutils literal notranslate"><span class="pre">fn</span></code>.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// Sebuah fungsi</span>
 <span class="k">fn</span> <span class="nf">a_function</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span>
@@ -74,7 +132,7 @@
 </div>
 <p>Saat sebuah fungsi mengembalikan nilai, kita harus menuliskan secara eksplisit tipe apa yang ia kembalikan dengan tanda <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>. Lalu karena Rust merupakan expression-oriented language, kita tidak perlu menuliskan keyword <code class="docutils literal notranslate"><span class="pre">return</span></code> pada saat mengembalikan nilai. Cukup menuliskan nilai yang dikembalikan tanpa titik koma seperti yang terlihat diatas.</p>
 <section id="early-return">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Early Return</a><a class="headerlink" href="#early-return" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Early Return</a><a class="headerlink" href="#early-return" title="Permalink to this heading"></a></h3>
 <p>Ada kalanya kita menginginkan sebuah nilai untuk dikembalikan duluan sebelum proses sebuah fungsi berakhir. Disinilah kita menggunakan keyword <cite>return</cite> dengan benar pada Rust.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">early_return</span><span class="p">(</span><span class="n">a</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">{</span>
@@ -89,7 +147,7 @@
 </section>
 </section>
 <section id="prosedur-dalam-rust">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Prosedur dalam Rust</a><a class="headerlink" href="#prosedur-dalam-rust" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Prosedur dalam Rust</a><a class="headerlink" href="#prosedur-dalam-rust" title="Permalink to this heading"></a></h2>
 <p>Disini kita akan membahas lebih detail tentang prosedur. Sebuah prosedur biasanya adalah sebuah rangkaian dari proses khusus yang dijalankan untuk mengubah sesuatu, dan tidak mengembalikan apa-apa. Contoh dari sebuah prosedur untuk mengubah nilai sebuah variabel adalah berikut:</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">change_value</span><span class="p">(</span><span class="n">a</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
@@ -111,22 +169,34 @@
 </section>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="Variabel.html">Variabel</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Konten</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="Ownership.html">Ownership</a>&#160;&#160;»
-        </p>
-
-      </div>
-
-    <div class="footer" role="contentinfo">
-        &#169; Hak cipta 2023, mukharomdev.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Variabel.html" class="btn btn-neutral float-left" title="Variabel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Ownership.html" class="btn btn-neutral float-right" title="Ownership" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  </body>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Hak cipta 2023, mukharomdev.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

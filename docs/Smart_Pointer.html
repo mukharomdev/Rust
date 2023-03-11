@@ -1,43 +1,107 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="id" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
-    <title>Smart Pointer &#8212; Pengenalan Rust Bahasa Indonesia</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Pointer &mdash; Pengenalan Rust Bahasa Indonesia</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Indeks" href="genindex.html" />
     <link rel="search" title="Pencarian" href="search.html" />
     <link rel="next" title="Cargo" href="Cargo.html" />
     <link rel="prev" title="Generic" href="Generic.html" /> 
-  </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>Pengenalan Rust Bahasa Indonesia</span></a></h1>
-        <h2 class="heading"><span>Smart Pointer</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="Generic.html">Generic</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Konten</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="Cargo.html">Cargo</a>&#160;&#160;»
-        </p>
+</head>
 
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Rust-docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Daftar Isi:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Pengenalan.html">Pengenalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Variabel.html">Variabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fungsi.html">Fungsi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ownership.html">Ownership</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Enumerasi_dan_Pattern_Matching.html">Enumerasi dan Pattern Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tipe_Result_dan_Option.html">Tipe Result dan Option</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kondisional.html">Kondisional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Loop.html">Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Struktur_dan_Implementasi.html">Struktur dan Implementasi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Trait.html">Trait</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generic.html">Generic</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Pointer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#box-smart-pointer">Box Smart Pointer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#penggunaan-box-lebih-mendalam">Penggunaan Box Lebih Mendalam</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deref-trait"><cite>Deref</cite> Trait</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dereferencing">Dereferencing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apa-itu-trait-deref">Apa itu Trait <cite>Deref</cite>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mendefinisikan-smart-pointer-kita-sendiri">Mendefinisikan smart pointer kita sendiri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mengimplementasikan-deref-pada-smart-pointer-kita">Mengimplementasikan <cite>Deref</cite> pada smart pointer kita</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deref-coercion">Deref Coercion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cargo.html">Cargo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crate.html">Crate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Referensi.html">Referensi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sample.html">Sample:Document Title</a></li>
+</ul>
+
+        </div>
       </div>
-      <div class="content" role="main">
-        
-        
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Rust-docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Smart Pointer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Smart_Pointer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="smart-pointer">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink">Smart Pointer</a><a class="headerlink" href="#smart-pointer" title="Permalink to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Smart Pointer</a><a class="headerlink" href="#smart-pointer" title="Permalink to this heading"></a></h1>
 <nav class="contents" id="overview">
 <p class="topic-title">Overview</p>
 <ul class="simple">
@@ -62,7 +126,7 @@
 </ul>
 </nav>
 <section id="box-smart-pointer">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Box Smart Pointer</a><a class="headerlink" href="#box-smart-pointer" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Box Smart Pointer</a><a class="headerlink" href="#box-smart-pointer" title="Permalink to this heading"></a></h2>
 <p>Sebuah pointer, sebuah konsep umum untuk sebuah variabel yang menyimpan alamat memory. Alamat memory ini menunjuk - pointing pada sebuah data. Smart Pointer, atau pointer pintar namun, adalah struktur data yang tidak hanya berperilaku seperti sebuah pointer, namun juga memiliki kapabilitas lain. Konsep smart pointer ini berawal dari C++.</p>
 <p>Di artikel ini, kita akan membahas penggunaan Box, sebuah smart pointer yang sangat umum digunakan di Rust. Box digunakan untuk menunjuk pada data di heap. Box memiliki kapabilitas untuk mengalokasikan data di heap dan menghapusnya ketika sudah tidak digunakan.</p>
 <p>Penggunaan Box adalah sebagai berikut</p>
@@ -81,7 +145,7 @@
 </pre></div>
 </div>
 <section id="penggunaan-box-lebih-mendalam">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Penggunaan Box Lebih Mendalam</a><a class="headerlink" href="#penggunaan-box-lebih-mendalam" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Penggunaan Box Lebih Mendalam</a><a class="headerlink" href="#penggunaan-box-lebih-mendalam" title="Permalink to this heading"></a></h3>
 <p>Sekarang, lihat <code class="docutils literal notranslate"><span class="pre">enum</span></code> berikut</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[derive(Debug)]</span>
 <span class="k">enum</span> <span class="nc">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -159,11 +223,11 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 </section>
 </section>
 <section id="deref-trait">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink"><cite>Deref</cite> Trait</a><a class="headerlink" href="#deref-trait" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><cite>Deref</cite> Trait</a><a class="headerlink" href="#deref-trait" title="Permalink to this heading"></a></h2>
 <p>Sebuah smart pointer adalah sebuah tipe yang mengimplementasikan trait Deref dan trait Drop. Di artikel kali ini, kita akan membahas tentang trait Deref yang membuat kita dapat memperlakukan sebuah pointer seperti sebuah reference biasa. Lalu apa maksud dari memperlakukan sebuah pointer seperti sebuah reference biasa?</p>
 <p>Sebelum itu, mari kita membahas lebih lanjut tentang Dereferencing.</p>
 <section id="dereferencing">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Dereferencing</a><a class="headerlink" href="#dereferencing" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Dereferencing</a><a class="headerlink" href="#dereferencing" title="Permalink to this heading"></a></h3>
 <p>Dereferencing adalah sebuah cara untuk mengakses nilai dari sebuah lokasi memori yang ditunjuk oleh sebuah pointer. Pada Rust, seperti dalam bahasa seperti C++, kita menggunakan operator * untuk dereferencing.</p>
 <p>Sekarang, mari kita lihat kode berikut</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -200,7 +264,7 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 <p>Pada assertion pertama, kita membandingkan 10 dan a, yang hasilnya adalah benar. Pada assertion kedua, kita membandingkan 10 dan b yang sudah kita dereference sehingga b disana merupakan value yang ia tunjuk, yaitu 10. Kode akan berjalan dengan baik.</p>
 </section>
 <section id="apa-itu-trait-deref">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Apa itu Trait <cite>Deref</cite>?</a><a class="headerlink" href="#apa-itu-trait-deref" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Apa itu Trait <cite>Deref</cite>?</a><a class="headerlink" href="#apa-itu-trait-deref" title="Permalink to this heading"></a></h3>
 <p>Kita dapat memperlakukan sebuah smart pointer seperti sebuah reference biasa.</p>
 <p>Untuk contoh yang lebih lanjut, kita akan mengganti kode diatas dan menggunakan sebuah smart pointer daripada sebuah reference. Kita akan menggunakan <code class="docutils literal notranslate"><span class="pre">Box&lt;T&gt;</span></code>.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -217,7 +281,7 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 <p>Untuk mengerti bagaimana itu bekerja, kita akan mendefinisikan sebuah smart pointer kita sendiri yang akan mengimplementasikan <code class="docutils literal notranslate"><span class="pre">Deref</span></code>.</p>
 </section>
 <section id="mendefinisikan-smart-pointer-kita-sendiri">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Mendefinisikan smart pointer kita sendiri</a><a class="headerlink" href="#mendefinisikan-smart-pointer-kita-sendiri" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Mendefinisikan smart pointer kita sendiri</a><a class="headerlink" href="#mendefinisikan-smart-pointer-kita-sendiri" title="Permalink to this heading"></a></h3>
 <p>Kita akan mendefiniskan sebuah smart pointer yang serupa dengan <code class="docutils literal notranslate"><span class="pre">Box&lt;T&gt;</span></code>. Hanya saja, disini kita tidak akan menyimpan nilai pada heap. Disini kita akan berfokus pada dereference operator, bukan dimana lokasi data disimpan.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Kotak</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
 
@@ -241,7 +305,7 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 <p>Namun pada kode diatas, kita akan mendapatkan error dimana kita tidak bisa melakukan dereference pada tipe <code class="docutils literal notranslate"><span class="pre">Kotak</span></code> kita. Sekarang, mari kita implementasikan trait <code class="docutils literal notranslate"><span class="pre">Deref</span></code>.</p>
 </section>
 <section id="mengimplementasikan-deref-pada-smart-pointer-kita">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Mengimplementasikan <cite>Deref</cite> pada smart pointer kita</a><a class="headerlink" href="#mengimplementasikan-deref-pada-smart-pointer-kita" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Mengimplementasikan <cite>Deref</cite> pada smart pointer kita</a><a class="headerlink" href="#mengimplementasikan-deref-pada-smart-pointer-kita" title="Permalink to this heading"></a></h3>
 <p>Pertama-tama. panggil trait <code class="docutils literal notranslate"><span class="pre">Deref</span></code> di baris paling atas kode.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Deref</span><span class="p">;</span>
 </pre></div>
@@ -300,7 +364,7 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 </section>
 </section>
 <section id="deref-coercion">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Deref Coercion</a><a class="headerlink" href="#deref-coercion" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Deref Coercion</a><a class="headerlink" href="#deref-coercion" title="Permalink to this heading"></a></h2>
 <p>Kita telah melihat bagaimana trait <code class="docutils literal notranslate"><span class="pre">Deref</span></code> bekerja. Sekarang, kita akan melihat bagaimana trait <code class="docutils literal notranslate"><span class="pre">Deref</span></code> bekerja dengan <code class="docutils literal notranslate"><span class="pre">Deref</span> <span class="pre">Coercion</span></code>.</p>
 <p>Deref Coercion adalah sebuah fitur sangat praktis yang Rust akan secara otomatis gunakan pada dan hanya pada tipe yang mengimplementasikan trait <code class="docutils literal notranslate"><span class="pre">Deref</span></code> ketika tipe tersebut dijadikan argumen untuk fungsi atau method. Deref Coercion akan mengubah sebuah reference dari satu tipe kepada sebuah reference dari tipe yang berbeda.</p>
 <p>Untuk lebih jelasnya, mari kita lanjutkan kode diatas dengan menambahkan sebuah prosedur untuk mencetak <cite>&amp;str</cite>.</p>
@@ -361,22 +425,34 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 </section>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="Generic.html">Generic</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Konten</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="Cargo.html">Cargo</a>&#160;&#160;»
-        </p>
-
-      </div>
-
-    <div class="footer" role="contentinfo">
-        &#169; Hak cipta 2023, mukharomdev.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Generic.html" class="btn btn-neutral float-left" title="Generic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Cargo.html" class="btn btn-neutral float-right" title="Cargo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  </body>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Hak cipta 2023, mukharomdev.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
