@@ -31,7 +31,7 @@ pygments_style = 'sphinx'
 highlight_language = 'rust'
 html_title = 'Pengenalan Rust Bahasa Indonesia'
 
-language = 'id'
+language = 'en'
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
