@@ -24,7 +24,8 @@ jobs:
         run: |
           set -x
           apt-get update
-          apt-get install -y git make
+          apt-get install -y git make  python3-sphinx python
+          pip install sphinx-build sphinx-rtd-theme
           git clone "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
         shell: bash
 
