@@ -1,8 +1,8 @@
 name: build-sphinx-to-gh-pages
 
 env:
-  GITHUB_ACTOR: mukharomdev
-  GITHUB_REPOSITORY: mukharomdev/Rust-docs-indonesia 
+  GITHUB_ACTOR: annegentle
+  GITHUB_REPOSITORY: annegentle/create-demo
   GITHUB_TOKEN: ${{ secrets.CREATE_DEMO_SECRET }}
 
 on: 
@@ -15,16 +15,16 @@ jobs:
   build_sphinx_job:
     runs-on: ubuntu-latest
     container: debian:buster-slim
-    
+
     steps:
-     
+    
       - name: Get prerequisites and clone repository
         env:
           GITHUB_TOKEN: ${{ secrets.CREATE_DEMO_SECRET }}
         run: |
           set -x
           apt-get update
-          apt-get install -y git make python3-sphinx sphinx-rtd-theme make
+          apt-get install -y git
           git clone "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
         shell: bash
 
