@@ -1,36 +1,24 @@
-name: build-sphinx-to-gh-pages
-
-env:
-  GITHUB_ACTOR: mukharomdev
-  GITHUB_REPOSITORY: mukharomdev/Rust-docs-indonesia
-  GITHUB_TOKEN: ${{ secrets.CREATE_DEMO_SECRET }}
-
-on: 
-  push:
-    branches: [ main ]
-
-
+name: Docs
+on: [push, pull_request, workflow_dispatch]
+permissions:
+    contents: write
 jobs:
-
-  build_sphinx_job:
+  docs:
     runs-on: ubuntu-latest
-    container: debian:buster-slim
-
     steps:
-    
-      - name: Get prerequisites and clone repository
-        env:
-          GITHUB_TOKEN: ${{ secrets.CREATE_DEMO_SECRET }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install dependencies
         run: |
-          set -x
-          apt-get update
-          apt-get install -y git make python3 python3-pip python3-sphinx 
-          pip3 install --no-cache-dir sphinx-rtd-theme
-          git clone "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
-        shell: bash
-
-      - name: Run build script for Sphinx pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.CREATE_DEMO_SECRET }}
-        run: "cp -rf docsourc/* docs/ && docs/buildsite.sh"
-        shell: bash
+          pip install sphinx sphinx_rtd_theme
+      - name: Sphinx build
+        run: |
+          sphinx-build docs/source _build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.CODE_GITHUB_TOKEN }}
+          publish_dir: _build/
+          force_orphan: true
