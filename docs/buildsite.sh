@@ -38,7 +38,7 @@ touch .nojekyll
  
 # Add README
 cat > README.md <<EOF
-# README for the GitHub Pages Branch
+# README GitHub Pages Branch
 Branch ini adalah sebuah cache sederhana untuk website yang berasal dari https://mukharomdev.github.io/Rust-docs-indonesia,
 
 Untuk informasi manual penggunaan Sphinx, baca dokumentasi resminya , serta  GitHub Actions/Pages, mungkin link dibawah ini bisa membantu:
