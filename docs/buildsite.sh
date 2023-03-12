@@ -2,7 +2,7 @@
 set -x
 
 apt-get update
-apt-get -y install git rsync python3-sphinx sphinx-rtd-theme
+apt-get -y install git rsync python3-sphinx sphinx-rtd-theme make
 
 pwd ls -lah
 export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
@@ -39,10 +39,9 @@ touch .nojekyll
 # Add README
 cat > README.md <<EOF
 # README for the GitHub Pages Branch
-This branch is simply a cache for the website served from https://mukharomdev.github.io/Rust-docs-indonesia,
-and is  not intended to be viewed on github.com.
+Branch ini adalah sebuah cache sederhana untuk website yang berasal dari https://mukharomdev.github.io/Rust-docs-indonesia,
 
-For more information on how this site is built using Sphinx, Read the Docs, and GitHub Actions/Pages, see:
+Untuk informasi manual penggunaan Sphinx, baca dokumentasi resminya , serta  GitHub Actions/Pages, mungkin link dibawah ini bisa membantu:
  * https://www.docslikecode.com/articles/github-pages-python-sphinx/
  * https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
 EOF
