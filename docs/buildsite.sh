@@ -2,12 +2,12 @@
 set -x
 
 apt-get update
-apt-get -y install git rsync python3-sphinx sphinx-rtd-theme make
+apt-get -y install git rsync python3-sphinx sphinx-rtd-theme automake
 
 pwd ls -lah
 export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
-cp -rf docsourc/* docs
-cd docs
+cp -rf docsourc/* .
+
 ##############
 # BUILD DOCS #
 ##############
