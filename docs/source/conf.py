@@ -20,7 +20,9 @@ release = '0.0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 source_suffix = '.rst'
-extensions = []
+extensions = [
+  'sphinx_rtd_theme',
+]
 # The master toctree document.
 master_doc = 'index'
 templates_path = ['_templates']
