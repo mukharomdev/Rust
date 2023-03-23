@@ -3,8 +3,8 @@
 Struktur dan Implementasi
 """""""""""""""""""""""""
 
-.. contents:: Overview
-   :depth: 3
+.. .. contents:: Overview
+..    :depth: 3
 
 
 =========================
@@ -58,7 +58,7 @@ Sekarang, kita akan membahas beberapa derive trait berguna yang paling sering di
 
 Sebagai catatan, untuk memakai derive trait, seluruh field dalam ``struct`` harus juga telah mengimplementasikan ``trait`` yang kita derive tersebut. Karena itu, kita tidak akan bisa menggunakan ``trait`` ``Copy`` tanpa ``Clone`` bila ada ``String`` didalam field ``struct`` kita.
 
-- **Debug**
+**Debug**
 -----------
 
 
@@ -84,7 +84,7 @@ Contoh penggunaan:
             // OUTPUT: Person { name: "Fulan", age: 27 }
             
 
-- **Clone**
+**Clone**
 -----------
 
 Masih ingat dengan materi ownership sebelumnya? Dengan mengimplementasikan ``Clone``, kita dapat melakukan cloning pada tipe kita dengan method ``clone()`` seperti yang sudah pernah dijelaskan di materi ownership sebelumnya.
@@ -108,7 +108,7 @@ Contoh penggunaan:
             }
 
 
-- **Copy**
+**Copy**
 -----------
 
 Seperti ``Clone``, ``Copy`` juga merupakan trait yang berguna untuk melakukan cloning. Namun, ``Copy`` memiliki beberapa syarat yang harus dipenuhi agar dapat digunakan. Syarat-syarat tersebut adalah sebagai berikut:

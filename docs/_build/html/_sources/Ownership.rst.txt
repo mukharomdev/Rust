@@ -2,8 +2,8 @@
 Ownership
 """""""""
 
-.. contents:: overview
-    :depth: 3
+.. .. contents:: overview
+..     :depth: 3
 
 =========
 Ownership

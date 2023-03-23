@@ -2,8 +2,8 @@
 Smart Pointer
 """""""""""""""
 
-..  contents:: Overview
-    :depth: 3
+.. ..  contents:: Overview
+..     :depth: 3
 
 ==================
 Box Smart Pointer

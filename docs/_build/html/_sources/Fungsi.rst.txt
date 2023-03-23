@@ -3,8 +3,8 @@ Fungsi
 """"""""""
 
 
-.. contents:: Overview
-   :depth: 3
+.. .. contents:: Overview
+..    :depth: 3
    
 ===========
 Fungsi
@@ -77,7 +77,7 @@ Disini kita akan membahas lebih detail tentang prosedur. Sebuah prosedur biasany
 Prosedur tersebut menerima sebuah **mutable reference** atau reference yang dapat diubah kepada sebuah nilai, dan kemudian mengubah nilai tersebut. Tanda asterisk ``*`` diatas berfungsi untuk men-dereference nilai dari reference diatas, sehingga ia mengubah nilai yang direferensikan reference tersebut.
 
 
-
+---------
 Latihan
 ---------
 

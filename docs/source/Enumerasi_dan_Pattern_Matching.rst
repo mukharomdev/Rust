@@ -2,8 +2,8 @@
 Enumerasi dan Pattern Matching
 """"""""""""""""""""""""""""""
 
-.. contents:: Overview
-   :depth: 3
+.. .. contents:: Overview
+..    :depth: 3
 
 ============
 Enumeration
@@ -52,6 +52,7 @@ Pattern matching menggunakan keyword ``match``.
             
 Pada kode diatas, tanda underscore ``_`` menandakan value lain bila ``a`` bukanlah merupakan salah satu dari kedua kemungkinan diatas, yaitu ``10`` dan ``20``.
 
+--------------------------
 Pattern Matching pada Enum
 --------------------------
 

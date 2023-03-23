@@ -3,8 +3,8 @@
 Tipe Result dan Option
 """"""""""""""""""""""
 
-.. contents:: Overview
-   :depth: 3
+.. .. contents:: Overview
+..    :depth: 3
 
 ======================
 Result dan Option Type

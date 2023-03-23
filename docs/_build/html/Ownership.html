@@ -1,71 +1,165 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="id" >
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ownership &mdash; Pengenalan Rust Bahasa Indonesia</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enumerasi dan Pattern Matching" href="Enumerasi_dan_Pattern_Matching.html" /><link rel="prev" title="Fungsi" href="Fungsi.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Ownership - Pengenalan Rust Bahasa Indonesia</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/translations.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Indeks" href="genindex.html" />
-    <link rel="search" title="Pencarian" href="search.html" />
-    <link rel="next" title="Enumerasi dan Pattern Matching" href="Enumerasi_dan_Pattern_Matching.html" />
-    <link rel="prev" title="Fungsi" href="Fungsi.html" /> 
-</head>
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Rust-docs
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Daftar Isi:</span></p>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Pengenalan Rust Bahasa Indonesia</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Pengenalan Rust Bahasa Indonesia</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Daftar Isi:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Pengenalan.html">Pengenalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Variabel.html">Variabel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fungsi.html">Fungsi</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Ownership</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Ownership</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#peraturan-ownership">Peraturan Ownership</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#masalah">Masalah</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#primitive-type-vs-non-primitive-type">Primitive Type vs Non-Primitive Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#copy-trait"><strong>Copy Trait</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#move"><strong>Move</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#mengatasi-masalah">Mengatasi Masalah</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#borrow"><strong>Borrow</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#clone"><strong>Clone</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Ownership</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Enumerasi_dan_Pattern_Matching.html">Enumerasi dan Pattern Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tipe_Result_dan_Option.html">Tipe Result dan Option</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Kondisional.html">Kondisional</a></li>
@@ -77,76 +171,67 @@
 <li class="toctree-l1"><a class="reference internal" href="Cargo.html">Cargo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Crate.html">Crate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Referensi.html">Referensi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Sample.html">Sample:Document Title</a></li>
 </ul>
 
-        </div>
+</div>
+</div>
+
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Rust-docs</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Ownership</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Ownership.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <div class="section" id="ownership">
-<h1><a class="toc-backref" href="#id2">Ownership</a><a class="headerlink" href="#ownership" title="Permalink to this heading"></a></h1>
-<div class="contents topic" id="overview">
-<p class="topic-title">overview</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#ownership" id="id2">Ownership</a></p>
-<ul>
-<li><p><a class="reference internal" href="#id1" id="id3">Ownership</a></p>
-<ul>
-<li><p><a class="reference internal" href="#peraturan-ownership" id="id4">Peraturan Ownership</a></p></li>
-<li><p><a class="reference internal" href="#masalah" id="id5">Masalah</a></p></li>
-<li><p><a class="reference internal" href="#mengatasi-masalah" id="id6">Mengatasi Masalah</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id3">Ownership</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="ownership">
+<h1>Ownership<a class="headerlink" href="#ownership" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>Ownership<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Ownership merupakan sebuah sistem yang membuat Rust itu unik. Disinilah nilai jual Rust, yang membedakan Rust dan bahasa lainnya. Dengan sistem ownership pada Rust, Rust dapat mencapai keamanan memory tanpa penggunaan garbage collector.</p>
-<div class="section" id="peraturan-ownership">
-<h3><a class="toc-backref" href="#id4">Peraturan Ownership</a><a class="headerlink" href="#peraturan-ownership" title="Permalink to this heading"></a></h3>
+<section id="peraturan-ownership">
+<h3>Peraturan Ownership<a class="headerlink" href="#peraturan-ownership" title="Permalink to this heading">#</a></h3>
 <p>Ownershipnya Rust memiliki beberapa peraturan:</p>
 <ul class="simple">
 <li><p>Setiap nilai dalam Rust memiliki pemilik atau owner</p></li>
 <li><p>Hanya boleh ada satu pemilik dalam satu waktu</p></li>
 <li><p>Ketika si pemilik keluar dari scope, maka nilai akan di-drop atau dihapus</p></li>
 </ul>
-</div>
-<div class="section" id="masalah">
-<h3><a class="toc-backref" href="#id5">Masalah</a><a class="headerlink" href="#masalah" title="Permalink to this heading"></a></h3>
+</section>
+<section id="masalah">
+<h3>Masalah<a class="headerlink" href="#masalah" title="Permalink to this heading">#</a></h3>
 <p>Bagi pemula, saat belajar Rust pasti pernah melakukan hal semacam ini:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;Halo&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    let a = String::from(&quot;Halo&quot;);
+    let b = a;
 
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    println!(&quot;{}&quot;, a);
+}
 </pre></div>
 </div>
 <p>Dan kemudian, saat dicompile, ternyata error.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span>error[E0382]: borrow of moved value: `a`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>error[E0382]: borrow of moved value: `a`
  --&gt; test.rs:5:20
   |
 2 |     let a = String::from(&quot;Halo&quot;);
@@ -159,115 +244,171 @@
 </pre></div>
 </div>
 <p>Hal ini tentu akan memusingkan bagi pemula yang baru belajar bahasa Rust. Apa sih yang dimaksud dengan <cite>moved value</cite>? Apa sih <code class="docutils literal notranslate"><span class="pre">borrow</span></code>? Apa maksud dari <cite>does not implement Copy trait</cite>? Untuk mengetahuinya, mari kita kupas lebih lanjut.</p>
-<div class="section" id="primitive-type-vs-non-primitive-type">
-<h4>Primitive Type vs Non-Primitive Type<a class="headerlink" href="#primitive-type-vs-non-primitive-type" title="Permalink to this heading"></a></h4>
+<section id="primitive-type-vs-non-primitive-type">
+<h4>Primitive Type vs Non-Primitive Type<a class="headerlink" href="#primitive-type-vs-non-primitive-type" title="Permalink to this heading">#</a></h4>
 <p>Tipe data primitif merupakan tipe data klasik seperti <code class="docutils literal notranslate"><span class="pre">i32</span></code>, <code class="docutils literal notranslate"><span class="pre">u32</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">f32</span></code>, dan semacamnya sedangkan tipe data non-primitif merupakan tipe data seperti <cite>String</cite> atau <cite>Vec</cite>. Kunci utama dari ownership pada kedua jenis tipe data ini adalah, tipe data primitif mengimplementasikan trait <code class="docutils literal notranslate"><span class="pre">Copy</span></code> sedangkan tipe data non-primitif tidak.</p>
-</div>
-<div class="section" id="copy-trait">
-<h4><strong>Copy Trait</strong><a class="headerlink" href="#copy-trait" title="Permalink to this heading"></a></h4>
+</section>
+<section id="copy-trait">
+<h4><strong>Copy Trait</strong><a class="headerlink" href="#copy-trait" title="Permalink to this heading">#</a></h4>
 <p>Copy trait merupakan sebuah <code class="docutils literal notranslate"><span class="pre">trait</span></code> (Akan dibahas lebih lanjut nanti) yang berfungsi untuk memberitahu compiler bahwa suatu tipe tidak akan me-move nilainya, melainkan mengkopinya.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    let a = 10;
+    let b = a;
 
-<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+println!(&quot;{}&quot;, a);
+println!(&quot;{}&quot;, b);
+}
 </pre></div>
 </div>
 <p>Kode diatas akan berjalan dengan sempurna, tidak seperti kode dengan tipe data <code class="docutils literal notranslate"><span class="pre">String</span></code> diatasnya lagi. Mengapa? Karena <code class="docutils literal notranslate"><span class="pre">a</span></code> dan <code class="docutils literal notranslate"><span class="pre">b</span></code> memiliki tipe data <code class="docutils literal notranslate"><span class="pre">i32</span></code>, maka <code class="docutils literal notranslate"><span class="pre">a</span></code> dan <code class="docutils literal notranslate"><span class="pre">b</span></code> mengimplementasikan trait <code class="docutils literal notranslate"><span class="pre">Copy</span></code> sehingga variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> yang di-assign ke <code class="docutils literal notranslate"><span class="pre">b</span></code> akan menunjuk kepada nilai yang berbeda di memory. <code class="docutils literal notranslate"><span class="pre">a</span></code> yang di-assign pada <cite>b</cite> bukan merupakan variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> yang sama lagi, melainkan nilai <code class="docutils literal notranslate"><span class="pre">10</span></code> baru di memory karena <code class="docutils literal notranslate"><span class="pre">a</span></code> merupakan sebuah kopi baru dari nilai <code class="docutils literal notranslate"><span class="pre">10</span></code> tersebut. Hal ini dilakukan secara otomatis untuk semua tipe yang mengimplementasikan trait <code class="docutils literal notranslate"><span class="pre">Copy</span></code>. Kesimpulannya adalah, tipe yang mengimplementasikan trait <code class="docutils literal notranslate"><span class="pre">Copy</span></code> akan secara otomatis membuat nilai baru di memory setiap kali ia dipakai.</p>
-</div>
-<div class="section" id="move">
-<h4><strong>Move</strong><a class="headerlink" href="#move" title="Permalink to this heading"></a></h4>
+</section>
+<section id="move">
+<h4><strong>Move</strong><a class="headerlink" href="#move" title="Permalink to this heading">#</a></h4>
 <p>Kita telah mengetahui bahwa tipe yang mengimplementasikan <code class="docutils literal notranslate"><span class="pre">Copy</span></code> akan selalu membuat kopi dari dirinya sendiri setiap kali ia dipakai. Lalu bagaimana dengan move? Tipe yang tidak mengimplementasikan <code class="docutils literal notranslate"><span class="pre">Copy</span></code> akan di-move, bukan di-copy setiap kali ia dipakai. Untuk lebih jelasnya, mari kita lihat kembali kode yang error diatas.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;Halo&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    let a = String::from(&quot;Halo&quot;);
+    let b = a;
 
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    println!(&quot;{}&quot;, a);
+}
 </pre></div>
 </div>
-<p>Disini terlihat bahwa variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> di-assign pada variabel <code class="docutils literal notranslate"><span class="pre">b</span></code>, kemudian kita memakai variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> pada macro <cite>println!</cite> dibawahnya. Dan yang terjadi adalah error. Mengapa demikian? Karena disaat kita assign variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> pada <code class="docutils literal notranslate"><span class="pre">b</span></code>, kepemilikan akan nilai dari variabel <code class="docutils literal notranslate"><span class="pre">a</span></code>, yaitu <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">&quot;Halo&quot;</span></code> akan di-move ke variabel <code class="docutils literal notranslate"><span class="pre">b</span></code> sehingga <code class="docutils literal notranslate"><span class="pre">a</span></code> tidak memiliki kepemilikan, atau ownership terhadap <cite>String &quot;Halo&quot;</cite> lagi yang membuatnya tidak lagi valid. Hal ini merupakan salah satu dari peraturan ownership dimana hanya dapat ada satu pemilik atau owner dalam satu waktu. <code class="docutils literal notranslate"><span class="pre">a</span></code> yang di-assign ke <code class="docutils literal notranslate"><span class="pre">b</span></code> bukan merupakan kopi, namun merupakan nilai yang sama di memory.</p>
-</div>
-</div>
-<div class="section" id="mengatasi-masalah">
-<h3><a class="toc-backref" href="#id6">Mengatasi Masalah</a><a class="headerlink" href="#mengatasi-masalah" title="Permalink to this heading"></a></h3>
+<p>Disini terlihat bahwa variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> di-assign pada variabel <code class="docutils literal notranslate"><span class="pre">b</span></code>, kemudian kita memakai variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> pada macro <cite>println!</cite> dibawahnya. Dan yang terjadi adalah error. Mengapa demikian? Karena disaat kita assign variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> pada <code class="docutils literal notranslate"><span class="pre">b</span></code>, kepemilikan akan nilai dari variabel <code class="docutils literal notranslate"><span class="pre">a</span></code>, yaitu <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">&quot;Halo&quot;</span></code> akan di-move ke variabel <code class="docutils literal notranslate"><span class="pre">b</span></code> sehingga <code class="docutils literal notranslate"><span class="pre">a</span></code> tidak memiliki kepemilikan, atau ownership terhadap <cite>String “Halo”</cite> lagi yang membuatnya tidak lagi valid. Hal ini merupakan salah satu dari peraturan ownership dimana hanya dapat ada satu pemilik atau owner dalam satu waktu. <code class="docutils literal notranslate"><span class="pre">a</span></code> yang di-assign ke <code class="docutils literal notranslate"><span class="pre">b</span></code> bukan merupakan kopi, namun merupakan nilai yang sama di memory.</p>
+</section>
+</section>
+<section id="mengatasi-masalah">
+<h3>Mengatasi Masalah<a class="headerlink" href="#mengatasi-masalah" title="Permalink to this heading">#</a></h3>
 <p>Lalu bagaimana cara kita untuk mengatasi masalah diatas? Bagaimana cara kita memakai variabel <code class="docutils literal notranslate"><span class="pre">a</span></code> berulang kali tanpa membuat error? Ada dua cara.</p>
-<div class="section" id="borrow">
-<h4><strong>Borrow</strong><a class="headerlink" href="#borrow" title="Permalink to this heading"></a></h4>
+<section id="borrow">
+<h4><strong>Borrow</strong><a class="headerlink" href="#borrow" title="Permalink to this heading">#</a></h4>
 <p>Dalam Rust, borrow atau meminjam merupakan sebuah cara yaitu menaruh <strong>(&amp;)</strong> atau tanda reference di depan sebuah variabel. Dengan borrow, kepemilikan sebuah nilai hanya akan dipinjam, bukan di-move dan akan dikembalikan kepada pemilik asalnya setelah keluar dari scope.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;Halo&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    let a = String::from(&quot;Halo&quot;);
+    let b = &amp;a;
 
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    println!(&quot;{}&quot;, a);
+    println!(&quot;{}&quot;, b);
+}
 </pre></div>
 </div>
 <p>Kode diatas akan berjalan dengan baik. Kita juga dapat memberikan reference pada fungsi lewat parameter.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span>: <span class="kp">&amp;</span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;Halo {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn greet(name: &amp;String) {
+    println!(&quot;Halo {}&quot;, name);
+}
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;Rahman&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">greet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+fn main() {
+    let name = String::from(&quot;Rahman&quot;);
+    greet(&amp;name);
+}
 </pre></div>
 </div>
 <p>Dan variabel <code class="docutils literal notranslate"><span class="pre">name</span></code> dapat tetap dipakai walau fungsi dipanggil berulang kali.</p>
-</div>
-<div class="section" id="clone">
-<h4><strong>Clone</strong><a class="headerlink" href="#clone" title="Permalink to this heading"></a></h4>
+</section>
+<section id="clone">
+<h4><strong>Clone</strong><a class="headerlink" href="#clone" title="Permalink to this heading">#</a></h4>
 <p>Cara kedua adalah cloning. Dengan menggunakan trait <code class="docutils literal notranslate"><span class="pre">Clone</span></code>, kita dapat melakukan hal yang mirip <code class="docutils literal notranslate"><span class="pre">Copy</span></code>, namun secara eksplisit kepada suatu tipe yang mengimplementasikan <code class="docutils literal notranslate"><span class="pre">Clone</span></code>.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;Halo&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    let a = String::from(&quot;Halo&quot;);
+    let b = a.clone();
 
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    println!(&quot;{}&quot;, a);
+    println!(&quot;{}&quot;, b);
+}
 </pre></div>
 </div>
-<p>Dan kode diatas akan berjalan dengan baik. Namun, perlu diketahui bahwa <code class="docutils literal notranslate"><span class="pre">Clone</span></code> itu &quot;mahal&quot;, karena <code class="docutils literal notranslate"><span class="pre">Clone</span></code> akan membuat nilai yang baru di memory, dan memory yang dialokasikan oleh tipe non-primitif tidaklah kecil. Jadi <code class="docutils literal notranslate"><span class="pre">a</span></code> dan <code class="docutils literal notranslate"><span class="pre">b</span></code> diatas tidaklah menunjuk kepada nilai yang sama di memory.</p>
+<p>Dan kode diatas akan berjalan dengan baik. Namun, perlu diketahui bahwa <code class="docutils literal notranslate"><span class="pre">Clone</span></code> itu “mahal”, karena <code class="docutils literal notranslate"><span class="pre">Clone</span></code> akan membuat nilai yang baru di memory, dan memory yang dialokasikan oleh tipe non-primitif tidaklah kecil. Jadi <code class="docutils literal notranslate"><span class="pre">a</span></code> dan <code class="docutils literal notranslate"><span class="pre">b</span></code> diatas tidaklah menunjuk kepada nilai yang sama di memory.</p>
 <p># Latihan</p>
 <p>Pada latihan kali ini, kita akan bertemu dengan dua fungsi. Namun, kedua-duanya error. Apa yang menyebabkannya? Tugas kalian adalah memperbaiki kode tersebut. Kerjakanlah soal pada file <code class="docutils literal notranslate"><span class="pre">lib.rs</span></code> dalam folder <code class="docutils literal notranslate"><span class="pre">src</span></code> kemudian run <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">test</span></code> untuk mengecek jawaban kalian!</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
-
-           </div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Enumerasi_dan_Pattern_Matching.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Enumerasi dan Pattern Matching</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Fungsi.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Fungsi</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, mukharomdev
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Fungsi.html" class="btn btn-neutral float-left" title="Fungsi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Enumerasi_dan_Pattern_Matching.html" class="btn btn-neutral float-right" title="Enumerasi dan Pattern Matching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Ownership</a><ul>
+<li><a class="reference internal" href="#id1">Ownership</a><ul>
+<li><a class="reference internal" href="#peraturan-ownership">Peraturan Ownership</a></li>
+<li><a class="reference internal" href="#masalah">Masalah</a><ul>
+<li><a class="reference internal" href="#primitive-type-vs-non-primitive-type">Primitive Type vs Non-Primitive Type</a></li>
+<li><a class="reference internal" href="#copy-trait"><strong>Copy Trait</strong></a></li>
+<li><a class="reference internal" href="#move"><strong>Move</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mengatasi-masalah">Mengatasi Masalah</a><ul>
+<li><a class="reference internal" href="#borrow"><strong>Borrow</strong></a></li>
+<li><a class="reference internal" href="#clone"><strong>Clone</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Hak cipta 2023, mukharomdev.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          </div>
         </div>
       </div>
-    </section>
+      
+      
+    </aside>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
 </html>

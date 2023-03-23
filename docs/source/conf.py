@@ -21,14 +21,14 @@ release = '0.0.1'
 
 source_suffix = '.rst'
 extensions = [
-  'sphinx_rtd_theme',
+  
 ]
 # The master toctree document.
 master_doc = 'index'
 templates_path = ['_templates']
 exclude_patterns = []
 pygments_style = 'sphinx'
-highlight_language = 'rust'
+#highlight_language = 'rust'
 html_title = 'Pengenalan Rust Bahasa Indonesia'
 
 language = 'en'
@@ -36,6 +36,6 @@ language = 'en'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 html_static_path = ['_static']
 html_theme_path = ["_themes", ]

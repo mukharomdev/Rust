@@ -1,71 +1,167 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="id" >
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tipe Result dan Option &mdash; Pengenalan Rust Bahasa Indonesia</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Kondisional" href="Kondisional.html" /><link rel="prev" title="Enumerasi dan Pattern Matching" href="Enumerasi_dan_Pattern_Matching.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Tipe Result dan Option - Pengenalan Rust Bahasa Indonesia</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/translations.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Indeks" href="genindex.html" />
-    <link rel="search" title="Pencarian" href="search.html" />
-    <link rel="next" title="Kondisional" href="Kondisional.html" />
-    <link rel="prev" title="Enumerasi dan Pattern Matching" href="Enumerasi_dan_Pattern_Matching.html" /> 
-</head>
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Rust-docs
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Daftar Isi:</span></p>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Pengenalan Rust Bahasa Indonesia</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Pengenalan Rust Bahasa Indonesia</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Daftar Isi:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Pengenalan.html">Pengenalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Variabel.html">Variabel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fungsi.html">Fungsi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ownership.html">Ownership</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Enumerasi_dan_Pattern_Matching.html">Enumerasi dan Pattern Matching</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tipe Result dan Option</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#result-dan-option-type">Result dan Option Type</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#result-type">Result Type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#unwrap">Unwrap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#expect">Expect</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#operator"><code class="docutils literal notranslate"><span class="pre">?</span></code> Operator</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#option-type">Option Type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#unwrap-or">Unwrap Or</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tipe Result dan Option</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Kondisional.html">Kondisional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Loop.html">Loop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Struktur_dan_Implementasi.html">Struktur dan Implementasi</a></li>
@@ -75,229 +171,275 @@
 <li class="toctree-l1"><a class="reference internal" href="Cargo.html">Cargo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Crate.html">Crate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Referensi.html">Referensi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Sample.html">Sample:Document Title</a></li>
 </ul>
 
-        </div>
+</div>
+</div>
+
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Rust-docs</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Tipe Result dan Option</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Tipe_Result_dan_Option.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <div class="section" id="tipe-result-dan-option">
-<h1><a class="toc-backref" href="#id1">Tipe Result dan Option</a><a class="headerlink" href="#tipe-result-dan-option" title="Permalink to this heading"></a></h1>
-<div class="contents topic" id="overview">
-<p class="topic-title">Overview</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#tipe-result-dan-option" id="id1">Tipe Result dan Option</a></p>
-<ul>
-<li><p><a class="reference internal" href="#result-dan-option-type" id="id2">Result dan Option Type</a></p>
-<ul>
-<li><p><a class="reference internal" href="#result-type" id="id3">Result Type</a></p></li>
-<li><p><a class="reference internal" href="#option-type" id="id4">Option Type</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="result-dan-option-type">
-<h2><a class="toc-backref" href="#id2">Result dan Option Type</a><a class="headerlink" href="#result-dan-option-type" title="Permalink to this heading"></a></h2>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="tipe-result-dan-option">
+<h1>Tipe Result dan Option<a class="headerlink" href="#tipe-result-dan-option" title="Permalink to this heading">#</a></h1>
+<section id="result-dan-option-type">
+<h2>Result dan Option Type<a class="headerlink" href="#result-dan-option-type" title="Permalink to this heading">#</a></h2>
 <p>Pada Rust, kita tidak melakukan error handling secara konvensional dengan try-catch seperti bahasa lainnya, melainkan menggunakan sebuah tipe yang diambil dari bahasa pemrograman fungsional, yaitu <cite>Result</cite> type. Untuk <cite>Option</cite> type, Rust menggunakannya sebagai tipe yang merepresentasikan value yang dapat kosong atau <cite>null</cite>. Rust menerapkan <cite>null safety</cite> atau keamanan dari <cite>null</cite> dengan menggunakan <cite>Option</cite>.</p>
-<div class="section" id="result-type">
-<h3><a class="toc-backref" href="#id3">Result Type</a><a class="headerlink" href="#result-type" title="Permalink to this heading"></a></h3>
+<section id="result-type">
+<h3>Result Type<a class="headerlink" href="#result-type" title="Permalink to this heading">#</a></h3>
 <p>Pada Rust, Result type diimplementasikan menggunakan <code class="docutils literal notranslate"><span class="pre">enum</span></code> Deklarasi <code class="docutils literal notranslate"><span class="pre">Result</span></code> type pada standard library <code class="docutils literal notranslate"><span class="pre">std::result</span></code> adalah sebagai berikut:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="nb">Ok</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w"></span>
-<span class="w">   </span><span class="nb">Err</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="o">&gt;</span> <span class="p">{</span>
+   <span class="n">Ok</span><span class="p">(</span><span class="n">T</span><span class="p">),</span>
+   <span class="n">Err</span><span class="p">(</span><span class="n">E</span><span class="p">),</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">T</span></code> dan <code class="docutils literal notranslate"><span class="pre">E</span></code> diatas merupakan tipe generic dimana kita dapat memasukkan tipe apapun kedalam sana dimana <code class="docutils literal notranslate"><span class="pre">T</span></code> merupakan tipe dari nilai yang akan dikembalikan dan <code class="docutils literal notranslate"><span class="pre">E</span></code> merupakan tipe dari error yang dapat muncul. Untuk generics akan kita bahas lebih dalam nanti. Sekarang, kita berfokus terlebih dahulu pada <code class="docutils literal notranslate"><span class="pre">Result</span></code> type.</p>
-<p>Sekarang, kita akan melihat contoh penggunaan <code class="docutils literal notranslate"><span class="pre">Result</span></code>. Misalnya, kita memiliki file <code class="docutils literal notranslate"><span class="pre">tes.txt</span></code> dengan isi teks &quot;Halo&quot;, lalu kita ingin membukanya.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">File</span><span class="p">;</span><span class="w"></span>
-<span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="n">Read</span><span class="p">;</span><span class="w"></span>
+<p>Sekarang, kita akan melihat contoh penggunaan <code class="docutils literal notranslate"><span class="pre">Result</span></code>. Misalnya, kita memiliki file <code class="docutils literal notranslate"><span class="pre">tes.txt</span></code> dengan isi teks “Halo”, lalu kita ingin membukanya.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use std::fs::File;
+use std::io::Read;
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">File</span>::<span class="n">open</span><span class="p">(</span><span class="s">&quot;tes.txt&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">&quot;File tidak dapat dibuka&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">&quot;Tidak dapat membaca konten {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+fn main() {
+    let mut file = match File::open(&quot;tes.txt&quot;) {
+        Ok(f) =&gt; f,
+        Err(_) =&gt; panic!(&quot;File tidak dapat dibuka&quot;),
+    };
+    let mut contents = String::new();
+    match file.read_to_string(&amp;mut contents) {
+        Ok(_) =&gt; {},
+        Err(e) =&gt; panic!(&quot;Tidak dapat membaca konten {}&quot;, e)
+    };
+    println!(&quot;{}&quot;, contents);
+}
 </pre></div>
 </div>
 <p>Nah, seperti yang pernah dijelaskan, kita bisa memakai <code class="docutils literal notranslate"><span class="pre">match</span></code> untuk <code class="docutils literal notranslate"><span class="pre">enum</span></code> adan karena <code class="docutils literal notranslate"><span class="pre">Result</span></code> type merupakan <code class="docutils literal notranslate"><span class="pre">enum</span></code>, kita bisa me-handle error dengan menggunakan <code class="docutils literal notranslate"><span class="pre">match</span></code>. <cite>Ok</cite> akan me-wrap atau membungkus value yang ingin kita dapatkan, sedangkan <code class="docutils literal notranslate"><span class="pre">Err</span></code> akan membungkus value error. Untuk ignore atau mengabaikan variabel yang di-wrap dalam varian, kita dapat menggunakan underscore <code class="docutils literal notranslate"><span class="pre">_</span></code>. Pada kode diatas, bila file <code class="docutils literal notranslate"><span class="pre">tes.txt</span></code> ditemukan, maka variabel <code class="docutils literal notranslate"><span class="pre">f</span></code> yang merupakan tipe <code class="docutils literal notranslate"><span class="pre">File</span></code> akan di-assign ke <code class="docutils literal notranslate"><span class="pre">file</span></code>. Sedangkan bila file tidak ditemukan, maka program akan terhenti diakrenakan <code class="docutils literal notranslate"><span class="pre">panic</span></code>. Untuk baris <code class="docutils literal notranslate"><span class="pre">match</span> <span class="pre">file.read_to_string(&amp;mut</span> <span class="pre">contents)</span></code>, kita menggunakan underscore didalam <code class="docutils literal notranslate"><span class="pre">Ok</span></code> dan kemudian tidak mengembalikan apa-apa, kita hanya mengisinya dengan kurung kurawal kosong <code class="docutils literal notranslate"><span class="pre">{}</span></code> dikarenakan method <code class="docutils literal notranslate"><span class="pre">read_to_string</span></code> akan mengisi variabel lain sehingga nilai dari <code class="docutils literal notranslate"><span class="pre">read_to_string</span></code> itu sendiri tidak dibutuhkan. Kita juga dapat menggunakan error yang terjadi dengan memakai variabel yang di-wrap dalam <code class="docutils literal notranslate"><span class="pre">Err</span></code> seperti <code class="docutils literal notranslate"><span class="pre">e</span></code> diatas.</p>
 <p>Cara diatas sangatlah <strong>awkward</strong> dan terlalu berputar-putar. Seharusnya kita tidak perlu menggunakan <cite>match</cite> dan kemudian memasang <code class="docutils literal notranslate"><span class="pre">panic</span></code> seperti itu. Error handling dengan <code class="docutils literal notranslate"><span class="pre">match</span></code> harusnya dilakukan disaat kita harus me-handle error dengan lebih detail lagi, seperti mengembalikan value errornya dari fungsi, fallback ketika error terjadi, dan sebagainya. Untuk mengatasi hal seperti diatas, Rust memiliki beberapa method yang lebih praktis.</p>
-<div class="section" id="unwrap">
-<h4>Unwrap<a class="headerlink" href="#unwrap" title="Permalink to this heading"></a></h4>
+<section id="unwrap">
+<h4>Unwrap<a class="headerlink" href="#unwrap" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">unwrap</span></code> adalah sebuah method Rust dimana kita langsung mengambil variabel yang di-wrap didalam <code class="docutils literal notranslate"><span class="pre">Ok</span></code> pada <code class="docutils literal notranslate"><span class="pre">Result</span></code> type dan akan terjadi <code class="docutils literal notranslate"><span class="pre">panic</span></code> bila <code class="docutils literal notranslate"><span class="pre">Err</span></code> terjadi. Kita sebaiknya memakai <code class="docutils literal notranslate"><span class="pre">unwrap</span></code> bila sudah yakin bahwa error tidak akan terjadi dan pasti value <code class="docutils literal notranslate"><span class="pre">Ok</span></code> yang akan dikembalikan. Namun sebagai contoh, kita akan memakai unwrap untuk kode diatas.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">File</span><span class="p">;</span><span class="w"></span>
-<span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="n">Read</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use std::fs::File;
+use std::io::Read;
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span>::<span class="n">open</span><span class="p">(</span><span class="s">&quot;tes.txt&quot;</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+fn main() {
+    let mut file = File::open(&quot;tes.txt&quot;).unwrap();
+    let mut contents = String::new();
+    file.read_to_string(&amp;mut contents).unwrap();
+    println!(&quot;{}&quot;, contents);
+}
 </pre></div>
 </div>
 <p>Nah, kode ini hampir ekuivalen dengan kode diatas. Namun, ada cara method lain yang akan membuat kode sependek menggunakan <code class="docutils literal notranslate"><span class="pre">unwrap</span></code>, namun ekuivalen dengan kode diatas.</p>
-</div>
-<div class="section" id="expect">
-<h4>Expect<a class="headerlink" href="#expect" title="Permalink to this heading"></a></h4>
+</section>
+<section id="expect">
+<h4>Expect<a class="headerlink" href="#expect" title="Permalink to this heading">#</a></h4>
 <p>Dengan menggunakan method <code class="docutils literal notranslate"><span class="pre">expect</span></code>, kita dapat menuliskan error kita sendiri bila <code class="docutils literal notranslate"><span class="pre">panic</span></code> terjadi. <cite>expect</cite> tidaklah berbeda dengan <code class="docutils literal notranslate"><span class="pre">unwrap</span></code>, ia akan langsung mengambil value dalam <code class="docutils literal notranslate"><span class="pre">Ok</span></code>, atau <code class="docutils literal notranslate"><span class="pre">panic</span></code>. Namun, kita dapat menuliskan error kita sendiri.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">File</span><span class="p">;</span><span class="w"></span>
-<span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="n">Read</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use std::fs::File;
+use std::io::Read;
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span>::<span class="n">open</span><span class="p">(</span><span class="s">&quot;tes.txt&quot;</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;Tidak dapat membuka file&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;Tidak dapat membaca file&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+fn main() {
+    let mut file = File::open(&quot;tes.txt&quot;).expect(&quot;Tidak dapat membuka file&quot;);
+    let mut contents = String::new();
+    file.read_to_string(&amp;mut contents).expect(&quot;Tidak dapat membaca file&quot;);
+    println!(&quot;{}&quot;, contents);
+}
 </pre></div>
 </div>
 <p>Kode ini ekuivalen dengan kode yang menggunakan <code class="docutils literal notranslate"><span class="pre">match</span></code> diatas. Bila <code class="docutils literal notranslate"><span class="pre">panic</span></code> terjadi, maka seperti kita menggunakan macro <code class="docutils literal notranslate"><span class="pre">panic!</span></code>, pesan yang akan keluar adalah pesan yang kita tuliskan sendiri.</p>
-</div>
-<div class="section" id="operator">
-<h4><code class="docutils literal notranslate"><span class="pre">?</span></code> Operator<a class="headerlink" href="#operator" title="Permalink to this heading"></a></h4>
+</section>
+<section id="operator">
+<h4><code class="docutils literal notranslate"><span class="pre">?</span></code> Operator<a class="headerlink" href="#operator" title="Permalink to this heading">#</a></h4>
 <p>Rust memiliki sebuah operator khusus yang bisa digunakan untuk me-handle error dengan lebih praktis dan aman, yaitu dengan operator <code class="docutils literal notranslate"><span class="pre">?</span></code>. Namun, untuk menggunakan operator <code class="docutils literal notranslate"><span class="pre">?</span></code>, return type dari sebuah fungsi haruslah <code class="docutils literal notranslate"><span class="pre">Result</span></code> atau <code class="docutils literal notranslate"><span class="pre">Option</span></code> type, dan bagi <code class="docutils literal notranslate"><span class="pre">Result</span></code>, error yang ada pada <code class="docutils literal notranslate"><span class="pre">Result</span></code> type yang dikembalikan harus mengimplementasikan <code class="docutils literal notranslate"><span class="pre">From&lt;T&gt;</span></code> yang akan kita bahas lebih lanjut nanti.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">File</span><span class="p">;</span><span class="w"></span>
-<span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span>::<span class="p">{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Read</span><span class="p">};</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use std::fs::File;
+use std::io::{self, Read};
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">io</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span>::<span class="n">open</span><span class="p">(</span><span class="s">&quot;tes.txt&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">contents</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">);</span><span class="w"></span>
+fn main() -&gt; io::Result&lt;()&gt; {
+    let mut file = File::open(&quot;tes.txt&quot;)?;
+    let mut contents = String::new();
+    file.read_to_string(&amp;mut contents)?;
+    println!(&quot;{}&quot;, contents);
 
-<span class="w">    </span><span class="c1">// Agar sesuai return type</span>
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    // Agar sesuai return type
+    Ok(())
+}
 </pre></div>
 </div>
 <p>Kode diatas merupakan contoh penggunaan <code class="docutils literal notranslate"><span class="pre">?</span></code> operator. <code class="docutils literal notranslate"><span class="pre">?</span></code> operator akan mengembalikan <code class="docutils literal notranslate"><span class="pre">Err</span></code> bila error terjadi, dan akan me-assign value yang berada dalam <code class="docutils literal notranslate"><span class="pre">Ok</span></code> kepada variabel yang bersangkutan dengan operator <code class="docutils literal notranslate"><span class="pre">?</span></code>. Jadi ia berfungsi sama seperti semua method diatas, namun tidak <code class="docutils literal notranslate"><span class="pre">panic</span></code> bila error terjadi, tapi mengembalikan error tersebut. Untuk assignment value, ia akan assign seperti biasa bila sukses sehingga membuatnya ekuivalen dengan hal seperti ini:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">File</span>::<span class="n">open</span><span class="p">(</span><span class="s">&quot;tes.txt&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">),</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">mut</span> <span class="n">file</span> <span class="o">=</span> <span class="n">match</span> <span class="n">File</span><span class="p">::</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tes.txt&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Ok</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">f</span><span class="p">,</span>
+    <span class="n">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="n">Err</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+<span class="p">};</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="option-type">
-<h3><a class="toc-backref" href="#id4">Option Type</a><a class="headerlink" href="#option-type" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="option-type">
+<h3>Option Type<a class="headerlink" href="#option-type" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Option</span></code> type adalah enum, yang digunakan untuk null-safety dimana kita memakainya bila suatu value dapat memiliki kemungkinan untuk kosong. Definisi <code class="docutils literal notranslate"><span class="pre">Option</span></code> adalah sebagai berikut:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nb">Option</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">None</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="n">enum</span> <span class="n">Option</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kc">None</span><span class="p">,</span>
+    <span class="n">Some</span><span class="p">(</span><span class="n">T</span><span class="p">),</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Varian <code class="docutils literal notranslate"><span class="pre">Some(T)</span></code> merupakan varian yang berisi value bila value tersebut ada, dimana <code class="docutils literal notranslate"><span class="pre">T</span></code> adalah tipe generic yang mana value apapun dapat masuk kesana sedangkan <code class="docutils literal notranslate"><span class="pre">None</span></code> merupakan varian bila value tersebut kosong. Namun dengan <cite>Option</cite> type, value tersebut bukanlah <code class="docutils literal notranslate"><span class="pre">null</span></code>, tapi <code class="docutils literal notranslate"><span class="pre">enum</span></code> <code class="docutils literal notranslate"><span class="pre">Option</span></code> tersebut.</p>
 <p>Penggunaan <code class="docutils literal notranslate"><span class="pre">Option</span></code> type juga sama seperti <code class="docutils literal notranslate"><span class="pre">Result</span></code> type. Kita dapat menggunakan <code class="docutils literal notranslate"><span class="pre">match</span></code>, <code class="docutils literal notranslate"><span class="pre">unwrap</span></code>, <code class="docutils literal notranslate"><span class="pre">expect</span></code>, maupun operator <code class="docutils literal notranslate"><span class="pre">?</span></code> untuk me-handle <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">count_word</span><span class="p">(</span><span class="n">sentence</span>: <span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">word</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sentence</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">to_string</span><span class="p">()).</span><span class="n">collect</span>::<span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn count_word(sentence: String, word: &amp;str) -&gt; Option&lt;i32&gt; {
+    let mut count = 0;
+    let vec = sentence.split(&quot; &quot;).map(|s| s.to_string()).collect::&lt;Vec&lt;String&gt;&gt;();
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nb">None</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    for i in vec {
+        if i == word {
+            count += 1;
+        }
+    }
+    if count == 0 {
+        None
+    }
+    else {
+        Some(count)
+    }
+}
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">sentence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;Aku sedang coding bahasa Rust dan bahasa Rust ini sangat keren&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_word</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Rust&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;Tidak ditemukan kata tersebut di kalimat tersebut&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;Ditemukan {} kata tersebut di kalimat tersebut&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+fn main() {
+    let sentence = String::from(&quot;Aku sedang coding bahasa Rust dan bahasa Rust ini sangat keren&quot;);
+    let count = count_word(sentence, &quot;Rust&quot;);
+    match count {
+        None =&gt; println!(&quot;Tidak ditemukan kata tersebut di kalimat tersebut&quot;),
+        Some(value) =&gt; println!(&quot;Ditemukan {} kata tersebut di kalimat tersebut&quot;, value)
+    };
+}
 </pre></div>
 </div>
 <p>Kode diatas merupakan sebuah contoh penggunaan <code class="docutils literal notranslate"><span class="pre">Option</span></code> type dimana <code class="docutils literal notranslate"><span class="pre">count_word</span></code> merupakan fungsi yang menghitung jumlah kata tertentu didalam sebuah kalimat. Bila kata ditemukan, maka jumlah kata akan dikembalikan dalam varian <code class="docutils literal notranslate"><span class="pre">Some</span></code> dan bila tidak, varian <code class="docutils literal notranslate"><span class="pre">None</span></code> akan dikembalikan dari fungsi <code class="docutils literal notranslate"><span class="pre">count_word</span></code>. Lalu pada fungsi <code class="docutils literal notranslate"><span class="pre">main</span></code>, tergantung pada kondisi apakah varian yang dikembalikan adalah <code class="docutils literal notranslate"><span class="pre">None</span></code> atau <code class="docutils literal notranslate"><span class="pre">Some</span></code>, output <code class="docutils literal notranslate"><span class="pre">Tidak</span> <span class="pre">ditemukan</span> <span class="pre">kata</span> <span class="pre">tersebut</span> <span class="pre">di</span> <span class="pre">kalimat</span> <span class="pre">tersebut</span></code> atau <code class="docutils literal notranslate"><span class="pre">Ditemukan</span> <span class="pre">&lt;jumlah</span> <span class="pre">kata&gt;</span> <span class="pre">kata</span> <span class="pre">tersebut</span> <span class="pre">di</span> <span class="pre">kalimat</span> <span class="pre">tersebut</span></code> akan dicetak.</p>
-<div class="section" id="unwrap-or">
-<h4>Unwrap Or<a class="headerlink" href="#unwrap-or" title="Permalink to this heading"></a></h4>
+<section id="unwrap-or">
+<h4>Unwrap Or<a class="headerlink" href="#unwrap-or" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">unwrap_or</span></code> merupakan sebuah method untuk melakukan <code class="docutils literal notranslate"><span class="pre">unwrap</span></code> terhadap <code class="docutils literal notranslate"><span class="pre">Option</span></code> type, namun tidak akan <code class="docutils literal notranslate"><span class="pre">panic</span></code> bila value yang di-unwrap ternyata <code class="docutils literal notranslate"><span class="pre">None</span></code>, melainkan akan lari ke value default yang didefinisikan.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">default_example</span><span class="p">(</span><span class="n">opt</span>: <span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">opt</span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="s">&quot;Ini adalah value default&quot;</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn default_example(opt: Option&lt;&amp;str&gt;) {
+    println!(&quot;{}&quot;, opt.unwrap_or(&quot;Ini adalah value default&quot;));
+}
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">default_example</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">&quot;Test&quot;</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">default_example</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+fn main() {
+    default_example(Some(&quot;Test&quot;));
+    default_example(None);
+}
 </pre></div>
 </div>
 <p># Latihan</p>
 <p>TODO</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
-
-           </div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Kondisional.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Kondisional</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Enumerasi_dan_Pattern_Matching.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Enumerasi dan Pattern Matching</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, mukharomdev
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Enumerasi_dan_Pattern_Matching.html" class="btn btn-neutral float-left" title="Enumerasi dan Pattern Matching" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Kondisional.html" class="btn btn-neutral float-right" title="Kondisional" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tipe Result dan Option</a><ul>
+<li><a class="reference internal" href="#result-dan-option-type">Result dan Option Type</a><ul>
+<li><a class="reference internal" href="#result-type">Result Type</a><ul>
+<li><a class="reference internal" href="#unwrap">Unwrap</a></li>
+<li><a class="reference internal" href="#expect">Expect</a></li>
+<li><a class="reference internal" href="#operator"><code class="docutils literal notranslate"><span class="pre">?</span></code> Operator</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#option-type">Option Type</a><ul>
+<li><a class="reference internal" href="#unwrap-or">Unwrap Or</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Hak cipta 2023, mukharomdev.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          </div>
         </div>
       </div>
-    </section>
+      
+      
+    </aside>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
 </html>

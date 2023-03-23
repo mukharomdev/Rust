@@ -7,8 +7,9 @@ Rust-docs:Pengenalan Rust Bahasa Indonesia
 ==========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption:   Daftar Isi:
+   :hidden:
 
    Pengenalan
    Variabel
@@ -25,13 +26,13 @@ Rust-docs:Pengenalan Rust Bahasa Indonesia
    Cargo
    Crate
    Referensi
-   Sample
-   rst_cheatsheet
+..   Sample
+..   rst_cheatsheet
 
 
-Feature Link :
-==================
+.. Feature Link :
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
