@@ -7,8 +7,7 @@
 </p>
 
 ---
-[![build-sphinx-to-gh-pages](https://github.com/mukharomdev/Rust-docs-indonesia/actions/workflows/documentation.yaml/badge.svg)](https://github.com/mukharomdev/Rust-docs-indonesia/actions/workflows/documentation.yaml)
-[![build](https://github.com/mukharomdev/Rust-docs-indonesia/actions/workflows/build.yml/badge.svg)](https://github.com/mukharomdev/Rust-docs-indonesia/actions/workflows/build.yml)
+[![sphinx-docs](https://github.com/mukharomdev/Rust-docs-indonesia/actions/workflows/documentation.yml/badge.svg)](https://github.com/mukharomdev/Rust-docs-indonesia/actions/workflows/documentation.yml)
 ## Selamat Datang di Repositori Rust Bellshade
 
 Disini kalian akan belajar tentang Rust, disertai dengan latihan dalam bentuk tests, contoh struktur data dan algoritma yang diimplementasi dalam bahasa Rust, dan hal-hal lainnya.
