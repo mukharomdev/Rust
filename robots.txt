@@ -1,0 +1,6 @@
+
+User-agent: *
+
+Disallow: /
+
+Sitemap: https://mukharomdev.github.io/Rust-docs-indonesia/sitemap-index.xml
