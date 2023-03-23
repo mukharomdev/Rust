@@ -38,4 +38,5 @@ language = 'en'
 
 html_theme = 'furo'
 html_static_path = ['_static']
-html_theme_path = ["_themes", ]
+html_theme_path = ['_themes']
+html_extra_path = ['_html']
